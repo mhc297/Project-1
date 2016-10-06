@@ -39,49 +39,50 @@ body {
 .car {
   position: absolute;
   background-image: url("assets/blue-car.png");
-  height: 75px;
-  width: 50px;
+  height: 100px;
+  width: 66px;
   background-size: contain;
   background-repeat: no-repeat;
-  bottom: 5%;
+  bottom: 50px;
   left: 50%;
 }
 
 .obstacle{
   position: absolute;
   background-image: url("assets/red-reverse.gif");
-  height: 75px;
-  width: 50px;
+  height: 100px;
+  width: 66px;
   background-size: contain;
   background-repeat: no-repeat;
+  top: -200px;
 }
 
 #obstacle-1{
-  left: 10%;
-  top: -100px;
+  left: 15%;
+
 }
 
 #obstacle-2{
-  left: 25%;
-  top: -300px;
+  left: 40%;
+
 }
 
 #obstacle-3{
-  left: 40%;
-  top: -300px;
+  left: 60%;
+
 }
 
 #obstacle-4{
-  left: 55%;
-  top: -300px;
+  left: 85%;
+
 }
 
 #obstacle-5{
   left: 70%;
-  top: -300px;
+
 }
 
 #obstacle-6{
   left: 85%;
-  top: -300px;
+
 }
