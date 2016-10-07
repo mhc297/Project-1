@@ -1,12 +1,29 @@
+#landing-page{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #02394C;
+  align-items: center;
+  font-family: 'Luckiest Guy', cursive;
+  background-image: url("assets/bridge-background.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
 body {
   height: 100%;
   width: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
-  /*justify-content: space-around;*/
-  background-color: grey;
+  justify-content: center;
+  background-color: #02394C;
   align-items: center;
+  font-family: 'Luckiest Guy', cursive;
+  color: #000080;
 }
 
 #gameContainer{
@@ -56,7 +73,7 @@ body {
   width: 66px;
   background-size: contain;
   background-repeat: no-repeat;
-  /*top: -200px;*/
+  top: -200px;
 }
 
 #obstacle-1{
@@ -65,12 +82,12 @@ body {
 }
 
 #obstacle-2{
-  left: 40%;
+  left: 38%;
   top: -200px;
 }
 
 #obstacle-3{
-  left: 60%;
+  left: 68%;
   top: -150px;
 }
 
@@ -99,4 +116,46 @@ button{
   left: 85%;
 }*/
 
+#landing-container{
+  color: white;
+  margin-top: 50px;
+  width: 650px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  /*background-color: grey;*/
+  justify-content: center;
+  /*border: 2px solid black;*/
+}
+
+#landing-headline{
+  /*color: white;*/
+  text-align: center;
+}
+
+#landing-div{
+  height: 300px;
+  width: 350px;
+  display: flex;
+  /*justify-content: center;*/
+  /*border: 2px solid black;*/
+  margin: 10px;
+  /*background-color: #D3D3D3;*/
+}
+
+h1 {
+  font-size: 65px;
+  color: #255255255;
+}
+#call-to-action{
+  color: #255255255;
+  margin: 10px;
+  padding-top: 20px;
+  /*border: 2px solid black;*/
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  /*background-color: #D3D3D3;*/
+}
 

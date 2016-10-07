@@ -2,13 +2,6 @@ $(function(){
 
 var board = $('#board');
 var car = $('.car');
-var carHeight = parseInt(car.css('top'));
-var carWidth = parseInt(car.css('right'));
-var player1 = $('#player1')
-// var player2 = $('#player2')
-
-var speed = 10;
-var score = 0;
 var gameOver = false;
 var gamePaused = false;
 var pauseButton = $('pauseButton')
@@ -19,8 +12,11 @@ var obstacle_1 = $('#obstacle_1');
 var obstacle_2 = $('#obstacle_2');
 var obstacle_3 = $('#obstacle_3');
 var obstacle_4 = $('#obstacle_4');
-var obstacle_5 = $('#obstacle_5');
-var obstacle_6 = $('#obstacle_6');
+// var obstacle_5 = $('#obstacle_5');
+// var obstacle_6 = $('#obstacle_6');
+var speed = 10;
+var score = 0;
+var obstacleRightDefault;
 
 var boardHeight = parseInt(board.height());
 var boardWidth = parseInt(board.width());
@@ -31,21 +27,26 @@ var obstacleInitialPostion = parseInt(obstacle.css('top'));
 
 
 var startGame = setInterval (function(){
-  // this will update the obstacle's current position every 50ms
+  for (var i = 0; i < obstacle.length; i++){
+
+}
+
   obstacleCurrentPosition = parseInt(obstacle.css('top'));
-  // when current > 700px, current resets to a random height;
-  if(obstacleCurrentPosition > boardHeight) {
+
+  if(obstacleCurrentPosition > boardHeight){
     obstacleCurrentPosition = obstacleInitialPostion;
     obstacle.css('top', randomizeObstacle(-200, -500));
-    obstacle.css('right', randomizeObstacle(0, 100));
-    speed = randomizeObstacle(8,12);
+    obstacle.css('right', randomizeObstacle(0, 600));
+    speed = randomizeObstacle(7,13);
   } else{
     obstacle.css('top', obstacleCurrentPosition + speed);
-    console.log(speed);
+    console.log(obstacleCurrentPosition);
+    // console.log(speed);
+    // console.log(parseInt(car.css('right')))
   }
 
   if (parseInt(car.css('top')) <= 0 || parseInt(car.css('top')) >= boardHeight - carHeight || parseInt(car.css('right')) <= 0 || parseInt(car.css('right')) >= boardWidth - carWidth){
-  gameOver = true;
+    gameOver = true;
   }
 
   if (gameOver === true){
@@ -140,4 +141,5 @@ $(document).on('keydown', function(event){
 // }
 
 // // resets the obstacles to random heights when each leaves the bottom of the game area
+
 
