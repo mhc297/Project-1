@@ -41,9 +41,10 @@ body {
 .car {
   position: absolute;
   background-image: url("assets/blue-car.png");
-  height: 100px;
-  width: 66px;
-  background-size: contain;
+  height: 105px;
+  width: 52px;
+  /*background-size: contain;*/
+  background-size: cover;
   background-repeat: no-repeat;
   bottom: 50px;
   left: 50%;
@@ -53,8 +54,9 @@ body {
   position: absolute;
   background-image: url("assets/red-reverse.gif");
   height: 100px;
-  width: 66px;
-  background-size: contain;
+  width: 52px;
+  background-size: cover;
+  /*background-size: contain;*/
   background-repeat: no-repeat;
   top: -200px;
 }
