@@ -61,26 +61,6 @@ body {
   top: -200px;
 }
 
-#obstacle-1{
-  /*left: 15%;*/
-  top: -150px;
-}
-
-#obstacle-2{
-  /*left: 38%;*/
-  top: -200px;
-}
-
-#obstacle-3{
-  /*left: 68%;*/
-  top: -150px;
-}
-
-#obstacle-4{
-  /*left: 85%;*/
-  top: -200px;
-}
-
 #button-div{
   display: flex;
   align-items: center;
@@ -93,12 +73,5 @@ button{
   width: 150px;
 }
 
-/*#obstacle-5{
-  left: 70%;
-}
-
-#obstacle-6{
-  left: 85%;
-}*/
 
 
