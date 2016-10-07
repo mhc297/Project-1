@@ -3,29 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Landing Page</title>
+  <title>Loop 25</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
-<style>
-  background-image: url('assets/bridge-background.png')
-</style>
 </head>
-<body id="landing-page">
-<div id="landing-container">
-  <div id="landing-headline"><h1>Street Racer!</h1></div>
-  <div id="landing-div"></div>
-  <div id="call-to-action">
-    <form action="demo_form_method.asp" method="get" target="_blank">
-    First name: <input type="text" name="fname"><br>
-    Last name: <input type="text" name="lname"><br>
-    <input type="submit" value="Submit">
-    </form>
+<body>
 
-    <p>Enter your name and click submit to start the game!</p>
+  <div id="gameContainer">
+    <div id="board">
+      <div class="car" id="player1"></div>
+      <div class="obstacle" id="obstacle-1"></div>
+<!--       <div class="obstacle" id="obstacle-2"></div>
+      <div class="obstacle" id="obstacle-3"></div>
+      <div class="obstacle" id="obstacle-4"></div> -->
+      <!-- <div class="obstacle" id="obstacle-5"></div> -->
+      <!-- <div class="obstacle" id="obstacle-6"></div> -->
+    </div>
+
   </div>
-</div>
+  <div id="button-div">
+  <button id="pause"><b>Pause</b></button>
+  <button id="restart"><b>Restart</b></button>
+  </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" charset="utf-8"></script>
-<script src="script.js"></script>
+  <footer><p><b>Score: </b><span id="score">0</span></p>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" charset="utf-8"></script>
+  <script src="script.js"></script>
 </body>
 </html>
