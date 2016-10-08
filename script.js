@@ -5,11 +5,11 @@ var car = $('.car');
 var gameOver = false;
 var gamePaused = false;
 var pauseButton = $('pauseButton')
-var restartButton = $('restartButton')
 
 var obstacle = $('.obstacle');
 var speed = 10;
 var score = 0;
+var scoreBoard = $('#score');
 var obstacleRightDefault;
 
 var boardHeight = parseInt(board.height());
@@ -18,37 +18,33 @@ var carHeight = parseInt(car.height());
 var carWidth = parseInt(car.width());
 var obstacleInitialPostion = parseInt(obstacle.css('top'));
 var obstacleInitialWidth = parseInt(obstacle.css('right'));
+ // var obstacleCurrentWidth = parseInt(obstacle.css('right'));
 
 
 var startGame = setInterval (function(){
-
-
   obstacleCurrentPosition = parseInt(obstacle.css('top'));
-  obstacleCurrentWidth = parseInt(obstacle.css('right'));
 
-  if(obstacleCurrentPosition > boardHeight){
-    obstacleCurrentPosition = obstacleInitialPostion;
-    obstacle.css('top', randomizeObstacle(-100, -300));
-    obstacle.css('right', randomizeObstacle(0, 500));
-    speed = randomizeObstacle(9,13);
+  if(obstacleCurrentPosition > (1.4 * (boardHeight))){
     obstacle.each(function(){
-      var startPosition = randomizeObstacle(-100, -700);
-      $(this).css('top',startPosition+'px');
-      $(this).css('right', randomizeObstacle(0, 500))
+      obstacleCurrentPosition = obstacleInitialPostion;
+      var startPosition = randomizeObstacle(-300, -700);
+      $(this).css('top', startPosition);
+      $(this).css('right', randomizeObstacle(0, 500));
+      $(this).css('margin', randomizeObstacle (25, 50));
+      speed = randomizeObstacle(10,13);
+      score++;
+      console.log(score);
+      scoreBoard.text(score);
     });
-
   } else{
     obstacle.each(function() {
-      var currentPos = parseInt($(this).css('top'));
-      $(this).css('top', currentPos + speed + 'px');
+      var obstacleNewPosition = parseInt($(this).css('top'));
+      $(this).css('top', obstacleNewPosition + speed);
     });
-    // obstacle.css('top', obstacleCurrentPosition + speed);
-
-    console.log(Math.abs($('.obstacle').offset().left))
   }
 
+  // Collision detection - I was unable to get the following loop to work consistently so had to rewrite the code for each individual obstacle element
 
-  // Collision detection
   // for (var i = 0; i < obstacle.length; i++){
   //   if (Math.abs(($('.obstacle[i]').offset().top) - ($('.car').offset().top)) < carHeight && (Math.abs(($('.obstacle[i]').offset().left) - ($('.car').offset().left)) < carWidth)){
   //   gameOver = true;
@@ -69,20 +65,17 @@ var startGame = setInterval (function(){
     gameOver = true;
   }
 
-
-
-
   // Ends the game if the player steers into any of the walls
-  if (parseInt(car.css('top')) <= 0 || parseInt(car.css('top')) >= boardHeight - carHeight || parseInt(car.css('right')) <= 0 || parseInt(car.css('right')) >= boardWidth - carWidth){
+  if (parseInt(car.css('top')) <= -2 || parseInt(car.css('top')) >= boardHeight - carHeight || parseInt(car.css('right')) <= -2 || parseInt(car.css('right')) >= boardWidth - carWidth){
     gameOver = true;
   }
 
-  // 'Game over' conditions - clears the game interval, fires an alert message, ends the background road animation and displays the user's score
+  // 'Game over' conditions - clears the game interval, fires an alert message, ends the background road animation, displays the user's score & disables the player car movement
   if (gameOver === true){
     clearInterval(startGame);
-    console.log('Game Over');
+    console.log('Game Over! Your score is ' + score);
     $('#board').css("animation", "none");
-    // event.off;
+    $(document).off('keydown')
     };
 
   $('#pause-button').click(function(){
@@ -93,13 +86,12 @@ var startGame = setInterval (function(){
     clearInterval(startGame);
     console.log('Game Paused');
     $('#board').css("animation", "none");
-    var scoreStored;
-
-    // scoreStored = score.innerHTML;
+    $(document).off('keydown');
   }
+
 }, 50);
 
-// My math.random function that is pulled above to randomize the obstacles' start width, start height and velocity
+// The math.random function that is pulled above to randomize the obstacles' start width, start height and velocity
 randomizeObstacle = function (min, max){
   min=Math.ceil(min);
   max=Math.floor(max);
@@ -123,42 +115,58 @@ $(document).on('keydown', function(event){
 
   function moveLeft(){
     // console.log ('65 pressed');
-    parseInt(car.animate({'margin-left': '-=15'}, 50))
+    parseInt(car.animate({'margin-left': '-=10'}, 40))
   }
 
   function moveRight(){
     // console.log ('39 pressed');
-    parseInt(car.animate({'margin-left': '+=15'}, 50));
+    parseInt(car.animate({'margin-left': '+=10'}, 40));
   }
 
   function moveUp(){
     // console.log ('87 pressed');
-    parseInt(car.animate({'margin-bottom': '+=15'}, 50));
+    parseInt(car.animate({'margin-bottom': '+=10'}, 40));
   }
 
   function moveDown(){
     // console.log ('83 pressed');
-    parseInt(car.animate({'margin-bottom': '-=15'}, 50));
+    parseInt(car.animate({'margin-bottom': '-=10'}, 40));
     }
   })
 
-
 });
 
-    // $('#pause-button').click(function(){
-    // gamePaused = false;
-
-    // if (gamePaused === false){
-    //   setInterval(startGame, 50);
-    // }
-    // });
-
-
-
-// sets the obstacle's position
-// checks if the obstacle is still contained within the height
-// sets the current position equal to where it was starting the game to return the div
-// moves the divs from top to bottom
+  // if ($('#obstacle_1').offset().top === boardHeight){
+  //   score++;
+  //   console.log($('#obstacle_1').offset().top)
+  //   console.log(score);
+  //   scoreBoard.replaceWith(score);
+  // } if ($('#obstacle_2').offset().top === boardHeight){
+  //   score++;
+  //   console.log($('#obstacle_2').offset().top)
+  //   console.log(score);
+  //   scoreBoard.replaceWith(score);
+  // } if ($('#obstacle_3').offset().top === boardHeight){
+  //   score++;
+  //   console.log($('#obstacle_3').offset().top)
+  //   console.log(score);
+  //   scoreBoard.replaceWith(score)
+  // } if ($('#obstacle_4').offset().top === boardHeight){
+  //   score++;
+  //   console.log($('#obstacle_4').offset().top)
+  //   console.log(score);
+  //   scoreBoard.replaceWith(score)
+  // } if ($('#obstacle_5').offset().top === boardHeight){
+  //   score++;
+  //   console.log($('#obstacle_5').offset().top)
+  //   console.log(score);
+  //   scoreBoard.replaceWith(score)
+  // } if ($('#obstacle_6').offset().top === boardHeight){
+  //   score++;
+  //   console.log($('#obstacle_6').offset().top)
+  //   console.log(score);
+  //   scoreBoard.replaceWith(score)
+  // }
 
 // function(resumeGame){
 //   startGame();

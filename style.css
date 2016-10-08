@@ -4,23 +4,18 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  /*justify-content: space-around;*/
-  background-color: grey;
-  align-items: center;
-}
-
-#gameContainer{
-  width: 600px;
-  height: 800px;
-  display: flex;
-  flex-direction: row;
-  background-color: grey;
   justify-content: space-around;
+  background-color: #02394C;
+  align-items: center;
+  font-family: 'Luckiest Guy', cursive;
+  background-image: url("assets/bridge-background.png");
+  color: white;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 #board{
   position: relative;
-  margin-top: 2%;
   height: 700px;
   width: 600px;
   border: 2px solid black;
@@ -31,6 +26,8 @@ body {
   margin-left: 4%;
   overflow: hidden;
   animation: animatedBackground 4s linear infinite;
+  justify-content: space-around;
+  border: 1px solid white;
 }
 
 @keyframes animatedBackground {
@@ -41,24 +38,46 @@ body {
 .car {
   position: absolute;
   background-image: url("assets/blue-car.png");
-  height: 105px;
-  width: 52px;
-  /*background-size: contain;*/
+  height: 101px;
+  width: 50px;
   background-size: cover;
   background-repeat: no-repeat;
-  bottom: 50px;
+  bottom: 125px;
   left: 50%;
 }
 
 .obstacle{
   position: absolute;
-  background-image: url("assets/red-reverse.gif");
   height: 100px;
-  width: 52px;
+  width: 51px;
   background-size: cover;
   /*background-size: contain;*/
   background-repeat: no-repeat;
   top: -200px;
+}
+
+#obstacle_1{
+  background-image: url("assets/red-car.gif");
+}
+
+#obstacle_2{
+  background-image: url("assets/yellow-car.png");
+}
+
+#obstacle_3{
+  background-image: url("assets/police-car.png");
+}
+
+#obstacle_4{
+  background-image: url("assets/orange-car.png");
+}
+
+#obstacle_5{
+  background-image: url("assets/grey-car.png");
+}
+
+#obstacle_6{
+  background-image: url("assets/green-car.png");
 }
 
 #button-div{
@@ -66,11 +85,23 @@ body {
   align-items: center;
   width: 600px;
   height: 150px;
+  justify-content: space-around;
+}
+
+header{
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
 }
 
 button{
   height: 66px;
   width: 150px;
+  background-color: grey;
+  color: black;
+  font-family: 'Luckiest Guy', cursive;
 }
 
 

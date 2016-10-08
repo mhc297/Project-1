@@ -1,0 +1,176 @@
+#landing-page{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #02394C;
+  align-items: center;
+  font-family: 'Luckiest Guy', cursive;
+  background-image: url("assets/bridge-background.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+body{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #02394C;
+  align-items: center;
+  font-family: 'Luckiest Guy', cursive;
+  color: #000080;
+}
+
+#gameContainer{
+  margin-top: 25px;
+  width: 600px;
+  height: 800px;
+  display: flex;
+  flex-direction: row;
+  background-color: grey;
+  justify-content: space-around;
+}
+
+#board{
+  position: relative;
+  margin-top: 2%;
+  height: 700px;
+  width: 600px;
+  border: 2px solid black;
+  background-color: grey;
+  background-image: url("assets/road.jpg");
+  background-size: 10%;
+  background-repeat: repeat;
+  margin-left: 4%;
+  overflow: hidden;
+  animation: animatedBackground 4s linear infinite;
+}
+
+@keyframes animatedBackground {
+  from { background-position: 0 0; }
+  to { background-position: 0 100%; }
+}
+
+.car {
+  position: absolute;
+  background-image: url("assets/blue-car.png");
+  height: 100px;
+  width: 66px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  bottom: 50px;
+  left: 50%;
+}
+
+.obstacle{
+  position: absolute;
+}
+
+#obstacle-1{
+  background-image: url("assets/red-car.gif");
+  height: 100px;
+  width: 66px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: -200px;
+  left: 50%;
+}
+
+#obstacle-2{
+  background-image: url("assets/tank.png");
+  height: 100px;
+  width: 66px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: -200px;
+  /*left: 25%;*/
+}
+
+#obstacle-3{
+  background-image: url("assets/landmine.png");
+  height: 100px;
+  width: 66px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: -200px;
+  /*left: 75%;*/
+}
+
+#obstacle-4{
+  /*left: 85%;*/
+  top: -200px;
+}
+
+#button-div{
+  display: flex;
+  align-items: center;
+  width: 600px;
+  height: 150px;
+}
+
+button{
+  height: 66px;
+  width: 150px;
+  margin-top: 1px;
+}
+
+/*#obstacle-5{
+  left: 70%;
+}
+
+#obstacle-6{
+  left: 85%;
+}*/
+
+#landing-container{
+  color: white;
+  margin-top: 50px;
+  width: 650px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  /*background-color: grey;*/
+  justify-content: center;
+  /*border: 2px solid black;*/
+}
+
+#landing-headline{
+  /*color: white;*/
+  text-align: center;
+}
+
+#landing-div{
+  height: 300px;
+  width: 350px;
+  display: flex;
+  /*justify-content: center;*/
+  /*border: 2px solid black;*/
+  margin: 10px;
+  /*background-color: #D3D3D3;*/
+}
+
+h1 {
+  font-size: 65px;
+  color: #255255255;
+}
+
+#call-to-action{
+  color: #255255255;
+  margin: 10px;
+  padding-top: 20px;
+  /*border: 2px solid black;*/
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  /*background-color: #D3D3D3;*/
+}
+
+#submit-button{
+  margin-top: 5px;
+}
