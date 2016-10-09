@@ -16,7 +16,7 @@ body {
 
 #board{
   position: relative;
-  height: 700px;
+  height: 625px;
   width: 600px;
   border: 2px solid black;
   background-color: grey;
@@ -42,7 +42,7 @@ body {
   width: 50px;
   background-size: cover;
   background-repeat: no-repeat;
-  bottom: 125px;
+  bottom: 75px;
   left: 50%;
 }
 

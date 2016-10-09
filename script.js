@@ -8,8 +8,11 @@ var pauseButton = $('pauseButton')
 
 var obstacle = $('.obstacle');
 var speed = 10;
-var score = 0;
+var score = -6;
+var level = 1;
+var playerName = $('playerName');
 var scoreBoard = $('#score');
+var levelBoard = $('#level');
 var obstacleRightDefault;
 
 var boardHeight = parseInt(board.height());
@@ -31,38 +34,34 @@ var startGame = setInterval (function(){
       $(this).css('top', startPosition);
       $(this).css('right', randomizeObstacle(0, 500));
       $(this).css('margin', randomizeObstacle (25, 50));
-      speed = randomizeObstacle(10,13);
+      if (score === 35){
+        alert("Level Two Reached! Obstacles are Faster!")
+        level++;
+        levelBoard.text(level);
+      } if (score === 75){
+        alert("Level Three Reached! Obstacles are Faster!");
+        level++;
+        levelBoard.text(level);
+      } if (score < 35){
+        speed = randomizeObstacle(8,11);
+      } if (35 < score < 75){
+        speed = randomizeObstacle(11,15);
+      } if (score > 75){
+        speed = randomizeObstacle(15,17);
+      }
       score++;
-      console.log(score);
+      console.log(speed);
       scoreBoard.text(score);
     });
   } else{
     obstacle.each(function() {
       var obstacleNewPosition = parseInt($(this).css('top'));
       $(this).css('top', obstacleNewPosition + speed);
-    });
-  }
-
-  // Collision detection - I was unable to get the following loop to work consistently so had to rewrite the code for each individual obstacle element
-
-  // for (var i = 0; i < obstacle.length; i++){
-  //   if (Math.abs(($('.obstacle[i]').offset().top) - ($('.car').offset().top)) < carHeight && (Math.abs(($('.obstacle[i]').offset().left) - ($('.car').offset().left)) < carWidth)){
-  //   gameOver = true;
-  //   }
-  // };
-
-  if (Math.abs(($('#obstacle_1').offset().top) - ($('.car').offset().top)) < carHeight && (Math.abs(($('#obstacle_1').offset().left) - ($('.car').offset().left)) < carWidth)){
-    gameOver = true;
-  } if (Math.abs(($('#obstacle_2').offset().top) - ($('.car').offset().top)) < carHeight && (Math.abs(($('#obstacle_2').offset().left) - ($('.car').offset().left)) < carWidth)){
-    gameOver = true;
-  } if (Math.abs(($('#obstacle_3').offset().top) - ($('.car').offset().top)) < carHeight && (Math.abs(($('#obstacle_3').offset().left) - ($('.car').offset().left)) < carWidth)){
-    gameOver = true;
-  } if (Math.abs(($('#obstacle_4').offset().top) - ($('.car').offset().top)) < carHeight && (Math.abs(($('#obstacle_4').offset().left) - ($('.car').offset().left)) < carWidth)){
-    gameOver = true;
-  } if (Math.abs(($('#obstacle_5').offset().top) - ($('.car').offset().top)) < carHeight && (Math.abs(($('#obstacle_5').offset().left) - ($('.car').offset().left)) < carWidth)){
-    gameOver = true;
-  } if (Math.abs(($('#obstacle_6').offset().top) - ($('.car').offset().top)) < carHeight && (Math.abs(($('#obstacle_6').offset().left) - ($('.car').offset().left)) < carWidth)){
-    gameOver = true;
+      // collision detection
+      if ((Math.abs(($(this).offset().top) - car.offset().top) < carHeight && Math.abs(($(this).offset().left) - (car.offset().left)) < carWidth)){
+      gameOver = true
+    };
+  })
   }
 
   // Ends the game if the player steers into any of the walls
@@ -73,23 +72,16 @@ var startGame = setInterval (function(){
   // 'Game over' conditions - clears the game interval, fires an alert message, ends the background road animation, displays the user's score & disables the player car movement
   if (gameOver === true){
     clearInterval(startGame);
-    console.log('Game Over! Your score is ' + score);
+    alert('Game Over! Your score is ' + score);
     $('#board').css("animation", "none");
     $(document).off('keydown')
     };
 
-  $('#pause-button').click(function(){
-    gamePaused = true;
-  });
-
-  if (gamePaused === true){
-    clearInterval(startGame);
-    console.log('Game Paused');
-    $('#board').css("animation", "none");
-    $(document).off('keydown');
-  }
-
 }, 50);
+
+  $('#pause-button').click(function(){
+    alert('Game Paused');
+  });
 
 // The math.random function that is pulled above to randomize the obstacles' start width, start height and velocity
 randomizeObstacle = function (min, max){
@@ -97,8 +89,6 @@ randomizeObstacle = function (min, max){
   max=Math.floor(max);
   return Math.floor(Math.random() * (max-min)) + min;
 }
-
-
 
 // Player car movement inputs
 $(document).on('keydown', function(event){
