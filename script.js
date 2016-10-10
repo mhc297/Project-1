@@ -79,7 +79,8 @@ var startGame = setInterval (function(){
 
 }, 50);
 
-  $('#pause-button').click(function(){
+
+$('#pause-button').click(function(){
     alert('Game Paused');
   });
 
@@ -124,44 +125,22 @@ $(document).on('keydown', function(event){
     }
   })
 
+$(document).ready(function(){
+  var form = $('playerInput');
+
+  form.submit(function(event){
+    var playerName = $('#name').val();
+  })
+
+  $.post('form.asp', {name:username}, funtion(data){
+  playerName.html(data);
+})
 });
 
-  // if ($('#obstacle_1').offset().top === boardHeight){
-  //   score++;
-  //   console.log($('#obstacle_1').offset().top)
-  //   console.log(score);
-  //   scoreBoard.replaceWith(score);
-  // } if ($('#obstacle_2').offset().top === boardHeight){
-  //   score++;
-  //   console.log($('#obstacle_2').offset().top)
-  //   console.log(score);
-  //   scoreBoard.replaceWith(score);
-  // } if ($('#obstacle_3').offset().top === boardHeight){
-  //   score++;
-  //   console.log($('#obstacle_3').offset().top)
-  //   console.log(score);
-  //   scoreBoard.replaceWith(score)
-  // } if ($('#obstacle_4').offset().top === boardHeight){
-  //   score++;
-  //   console.log($('#obstacle_4').offset().top)
-  //   console.log(score);
-  //   scoreBoard.replaceWith(score)
-  // } if ($('#obstacle_5').offset().top === boardHeight){
-  //   score++;
-  //   console.log($('#obstacle_5').offset().top)
-  //   console.log(score);
-  //   scoreBoard.replaceWith(score)
-  // } if ($('#obstacle_6').offset().top === boardHeight){
-  //   score++;
-  //   console.log($('#obstacle_6').offset().top)
-  //   console.log(score);
-  //   scoreBoard.replaceWith(score)
-  // }
+});
 
-// function(resumeGame){
-//   startGame();
-//   score = scoreStored;
-// }
+
+
 
 
 
