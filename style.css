@@ -14,6 +14,21 @@ body {
   background-repeat: no-repeat;
 }
 
+#landing-page{
+  height: 600px;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #02394C;
+  align-items: center;
+  font-family: 'Luckiest Guy', cursive;
+  background-image: url("assets/bridge-background.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
 #board{
   position: relative;
   height: 625px;
@@ -104,5 +119,19 @@ button{
   font-family: 'Luckiest Guy', cursive;
 }
 
+#landing-headline{
+  position: absolute;
+  top: 150px;
+  font-size: 30px;
+
+}
+#call-to-action{
+  position: absolute;
+  bottom: 200px;
+}
+
+#submit-button{
+  margin-top: 10px;
+}
 
 

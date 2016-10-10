@@ -1,3 +1,13 @@
+ function getPlayerName (){
+  var playerName = $('#playerName');
+  var pullInfo = window.location.href;
+  var order = pullInfo.toString();
+  order = order.split('=').pop();
+  playerName.replaceWith(order);
+}
+
+getPlayerName();
+
 $(function(){
 
 var board = $('#board');
@@ -10,7 +20,7 @@ var obstacle = $('.obstacle');
 var speed = 10;
 var score = -6;
 var level = 1;
-var playerName = $('playerName');
+var playerName = $('#playerName');
 var scoreBoard = $('#score');
 var levelBoard = $('#level');
 var obstacleRightDefault;
@@ -21,19 +31,20 @@ var carHeight = parseInt(car.height());
 var carWidth = parseInt(car.width());
 var obstacleInitialPostion = parseInt(obstacle.css('top'));
 var obstacleInitialWidth = parseInt(obstacle.css('right'));
- // var obstacleCurrentWidth = parseInt(obstacle.css('right'));
 
-
+// setInterval that moves the obstacle elements
 var startGame = setInterval (function(){
   obstacleCurrentPosition = parseInt(obstacle.css('top'));
 
+  // regenerates the obstacle cars when they have traveled 1.4 times the length of the game board, randomizing the starting height, width and velocity
   if(obstacleCurrentPosition > (1.4 * (boardHeight))){
     obstacle.each(function(){
       obstacleCurrentPosition = obstacleInitialPostion;
       var startPosition = randomizeObstacle(-300, -700);
       $(this).css('top', startPosition);
-      $(this).css('right', randomizeObstacle(0, 500));
       $(this).css('margin', randomizeObstacle (25, 50));
+      $(this).css('right', randomizeObstacle(0, 500));
+      // levels, makes the game harder after the user has dodged a given number of obstacles
       if (score === 35){
         alert("Level Two Reached! Obstacles are Faster!")
         level++;
@@ -49,15 +60,17 @@ var startGame = setInterval (function(){
       } if (score > 75){
         speed = randomizeObstacle(15,17);
       }
+      // adds a point to the scoreboard as each car is generated (score starts at -6)
       score++;
-      console.log(speed);
       scoreBoard.text(score);
     });
+
   } else{
+    // moves the obstacle elements
     obstacle.each(function() {
       var obstacleNewPosition = parseInt($(this).css('top'));
       $(this).css('top', obstacleNewPosition + speed);
-      // collision detection
+      // collision detection, ends the game on a collision in relation to the car's and obstacles' relative offsets
       if ((Math.abs(($(this).offset().top) - car.offset().top) < carHeight && Math.abs(($(this).offset().left) - (car.offset().left)) < carWidth)){
       gameOver = true
     };
@@ -79,7 +92,7 @@ var startGame = setInterval (function(){
 
 }, 50);
 
-
+// Uses an alert to pause the game
 $('#pause-button').click(function(){
     alert('Game Paused');
   });
@@ -124,18 +137,6 @@ $(document).on('keydown', function(event){
     parseInt(car.animate({'margin-bottom': '-=10'}, 40));
     }
   })
-
-$(document).ready(function(){
-  var form = $('playerInput');
-
-  form.submit(function(event){
-    var playerName = $('#name').val();
-  })
-
-  $.post('form.asp', {name:username}, funtion(data){
-  playerName.html(data);
-})
-});
 
 });
 
